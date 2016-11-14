@@ -1,0 +1,6 @@
+#!/bin/bash
+
+archive_name="$1"
+
+7z x $archive_name
+./obfuscate-archive-copy-publish ${archive_name%.7z}

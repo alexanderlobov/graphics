@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+avconv -f image2 -i %04d.jpg -c:v libx264 264.mpg

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ $# != 2 ]]; then
+    echo "Usage: ply-to-zipped-wrl <input-file> <output-file>"
+    exit -1
+fi
+
+INPUT=$1
+OUTPUT=$2
+
+meshlabserver -i $INPUT -o $OUTPUT -om vc
+zip -9 $OUTPUT.zip $OUTPUT
+

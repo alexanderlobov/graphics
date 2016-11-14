@@ -1,0 +1,21 @@
+#!/bin/bash
+
+dirname=$1
+
+yadisk_path="$HOME/yadisk/texel/data/Ethnomir2015-out"
+
+if [[ -z $dirname ]]; then
+    echo "Usage: copy-to-yadisk <dirname>"
+    exit -1
+fi
+
+echo "dirname is $dirname"
+
+./obfuscate-dir $dirname
+./archive.py $dirname
+./copy-to-yadisk "$dirname" "$yadisk_path"
+
+cd $yadisk_path
+links_file="${dirname}-links.txt"
+~/data/etnomir/publish-all $dirname > $links_file
+yandex-disk publish $links_file

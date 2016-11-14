@@ -1,0 +1,18 @@
+#!/bin/bash
+
+dirname="$1"
+yadisk_path="$2"
+
+if [[ -z "$dirname" || -z "$yadisk_path" ]]; then
+    echo "Usage: copy-to-yadisk <dirname> <path>"
+    exit -1
+fi
+
+input_dir=${dirname}-archived
+output_dir=${yadisk_path}/${dirname}
+
+echo Creating links from $input_dir to $output_dir
+
+mkdir $output_dir
+ln ${input_dir}/* $output_dir
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dirname=$1
+
+if [[ -z $dirname ]]; then
+    echo "Usage: publish-all <dirname>"
+    exit -1
+fi
+
+cd $dirname
+
+for file in *; do
+    echo -n "$file "
+    yandex-disk publish $file
+done

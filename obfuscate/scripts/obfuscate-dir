@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ $# != 1 ]]; then
+    echo "Usage: obfuscate-dir <input-dir>"
+    exit -1
+fi
+
+input_dir=$1
+output_dir=${input_dir}-obfuscated
+echo "Output dir is $output_dir"
+mkdir $output_dir
+
+for f in $(ls $input_dir); do
+    input_file=$input_dir/$f
+    output_file=$output_dir/$f
+    echo `date` " Obfuscating: $input_file -> $output_file"
+    ./obfuscate $input_file $output_file
+done
+

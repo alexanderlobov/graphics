@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ $# != 2 ]]; then
+    echo "Usage: decimate-and-make-texture <input> <output>"
+    exit -1;
+fi
+
+input_mesh=$1
+output_mesh=$2
+meshlabserver -i $input_mesh -o $output_mesh -s decimate-and-uv.mlx -om wt
+meshlabserver -i $output_mesh $input_mesh -o $output_mesh -om wt -s transfer-color-to-texture.mlx

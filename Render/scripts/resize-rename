@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+convert back3.jpg -resize 2048x2048 negz.jpg
+convert front3.jpg -resize 2048x2048 posz.jpg
+convert left3.jpg -resize 2048x2048 negx.jpg
+convert right3.jpg -resize 2048x2048 posx.jpg
+convert up3.jpg -resize 2048x2048 posy.jpg
+convert down3.jpg -resize 2048x2048 negy.jpg
